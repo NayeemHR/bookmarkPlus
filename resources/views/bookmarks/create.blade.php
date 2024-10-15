@@ -40,7 +40,7 @@
                                         <line x1="3" x2="21" y1="10" y2="10"></line>
                                         <path d="m16 20 2 2 4-4"></path>
                                       </svg> --}}
-                                      <select class="bg-[length:20px_auto] disabled:bg-slate-100 disabled:cursor-not-allowed disabled:dark:bg-darkmode-700/50 [&amp;[readonly]]:bg-slate-100 [&amp;[readonly]]:cursor-not-allowed [&amp;[readonly]]:dark:bg-darkmode-700/50 bg-chevron-black transition duration-200 ease-in-out w-full text-sm border-slate-300/60 shadow-sm py-2 px-3 pr-8 focus:ring-4 focus:ring-primary focus:ring-opacity-20 focus:border-primary focus:border-opacity-40 dark:!bg-darkmode-700 dark:focus:ring-slate-700 dark:focus:ring-opacity-50 dark:bg-chevron-white sm:w-full rounded-[0.5rem] dark:!box" name="type" id="type">
+                                      <select class="bg-[length:20px_auto] disabled:bg-slate-100 disabled:cursor-not-allowed disabled:dark:bg-darkmode-700/50 [&amp;[readonly]]:bg-slate-100 [&amp;[readonly]]:cursor-not-allowed [&amp;[readonly]]:dark:bg-darkmode-700/50 bg-chevron-black transition duration-200 ease-in-out w-full text-sm border-slate-300/60 shadow-sm py-3 px-3 pr-8 focus:ring-4 focus:ring-primary focus:ring-opacity-20 focus:border-primary focus:border-opacity-40 dark:!bg-darkmode-700 dark:focus:ring-slate-700 dark:focus:ring-opacity-50 dark:bg-chevron-white sm:w-full rounded-[0.5rem] dark:!box" name="type" id="type">
                                         @php
                                     $type_list = ['video', 'article', 'podcast', 'blog', 'course', 'book', 'tool', 'other'];
                                     @endphp
@@ -54,10 +54,10 @@
                                   </div>
                             </div>
                             <div class="">
-                                <x-label for="tags" value="{{ __('Status') }}" />
+                                <x-label for="status" value="{{ __('Status') }}" />
                                 <div class="mt-1">
                                     <div class="relative">
-                                      <select class="bg-[length:20px_auto] disabled:bg-slate-100 disabled:cursor-not-allowed disabled:dark:bg-darkmode-700/50 [&amp;[readonly]]:bg-slate-100 [&amp;[readonly]]:cursor-not-allowed [&amp;[readonly]]:dark:bg-darkmode-700/50 bg-chevron-black transition duration-200 ease-in-out  w-full text-sm border-slate-300/60 shadow-sm py-2 px-3 pr-8 focus:ring-4 focus:ring-primary focus:ring-opacity-20 focus:border-primary focus:border-opacity-40 dark:!bg-darkmode-700 dark:focus:ring-slate-700 dark:focus:ring-opacity-50 dark:bg-chevron-white sm:w-full rounded-[0.5rem] dark:!box " name="type" id="type">
+                                      <select class="bg-[length:20px_auto] disabled:bg-slate-100 disabled:cursor-not-allowed disabled:dark:bg-darkmode-700/50 [&amp;[readonly]]:bg-slate-100 [&amp;[readonly]]:cursor-not-allowed [&amp;[readonly]]:dark:bg-darkmode-700/50 bg-chevron-black transition duration-200 ease-in-out  w-full text-sm border-slate-300/60 shadow-sm py-3 px-3 pr-8 focus:ring-4 focus:ring-primary focus:ring-opacity-20 focus:border-primary focus:border-opacity-40 dark:!bg-darkmode-700 dark:focus:ring-slate-700 dark:focus:ring-opacity-50 dark:bg-chevron-white sm:w-full rounded-[0.5rem] dark:!box " name="status" id="status">
                                         @php
                                     $status_list = ['new', 'in progress', 'completed', 'continue'];
                                     @endphp
@@ -76,7 +76,7 @@
                                 <x-input-error for="notes" class="mt-2" />
                             </div>
                         </div>
-                        <x-button type="submit" class="btn btn-primary">Save</x-button>
+                        <x-button type="submit" class="btn btn-primary mt-6">Save</x-button>
                     </form>
                 </div>
                 

@@ -21,7 +21,9 @@ class Bookmark extends Model
     public function tag(string $name)
     {
         $tag = Tag::firstOrCreate(['name' => strtolower(trim($name))]);
-        $this->tags()->attach($tag);
+        if (!$this->tags()->where('tag_id', $tag->id)->exists()) {
+            $this->tags()->attach($tag);
+        }
 
     }
 

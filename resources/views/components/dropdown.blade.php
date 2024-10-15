@@ -17,7 +17,10 @@ $width = match ($width) {
 
 <div class="relative" x-data="{ open: false }" @click.away="open = false" @close.stop="open = false">
     <div @click="open = ! open">
+        @auth
+            
         {{ $trigger }}
+        @endauth
     </div>
 
     <div x-show="open"

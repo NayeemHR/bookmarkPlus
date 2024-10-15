@@ -14,11 +14,12 @@ return new class extends Migration
         Schema::create('bookmark_tag', function (Blueprint $table) {
             $table->id();
 
-            // $table->foreignId(Bookmark::class)->constrained()->cascadeOnDelete();
-            // $table->foreignId(Tag::class)->constrained()->cascadeOnDelete();
+            $table->foreignIdFor(\App\Models\Bookmark::class)->constrained()->cascadeOnDelete();
+            $table->foreignIdFor(\App\Models\Tag::class)->constrained()->cascadeOnDelete();
 
-            $table->foreignId('bookmark_id')->constrained('bookmarks')->cascadeOnDelete();
-            $table->foreignId('tag_id')->constrained('tags')->cascadeOnDelete();
+            // $table->foreignId('bookmark_id')->constrained()->cascadeOnDelete();
+            // $table->foreignId('tag_id')->constrained()->cascadeOnDelete();
+            $table->unique(['bookmark_id', 'tag_id']);
 
             $table->timestamps();
         });

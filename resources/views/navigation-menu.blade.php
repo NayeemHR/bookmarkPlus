@@ -12,6 +12,9 @@
 
                 <!-- Navigation Links -->
                 <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
+                    <x-nav-link href="{{ route('home') }}" :active="request()->routeIs('home')">
+                        {{ __('Home') }}
+                    </x-nav-link>
                     <x-nav-link href="{{ route('dashboard') }}" :active="request()->routeIs('dashboard')">
                         {{ __('Dashboard') }}
                     </x-nav-link>
@@ -25,12 +28,6 @@
                     
                 </div>
             </div>
-            <div class="flex items-center " align="right">
-
-
-                <!-- Navigation Links -->
-                
-            </div>
 
 
 
@@ -39,7 +36,7 @@
                     <form action="/search" method="GET">
                         @csrf
                         @method('GET')
-                        <input name="q" type="text" id="search-dropdown" class="block p-2.5 w-full z-20 text-sm rounded-lg bg-white rounded-l-lg border border-gray-300 focus:outline-none" placeholder="Search..." required />
+                        <input name="q" type="text" id="search-dropdown" class="block p-2.5 w-full z-20 text-sm rounded-lg bg-white rounded-l-lg border border-gray-300 focus:outline-none" placeholder="Search..." value="{{request('q')}}" required />
                         <button type="submit" class="absolute top-0 end-0 p-2.5 text-sm font-medium h-full text-white bg-blue-700 rounded-e-lg border border-blue-700 hover:bg-blue-800 ">
                             <svg class="w-4 h-4" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20">
                                 <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m19 19-4-4m0-7A7 7 0 1 1 1 8a7 7 0 0 1 14 0Z"/>
@@ -47,7 +44,27 @@
                             <span class="sr-only">Search</span>
                         </button>
                     </form>
+
                     
+                    
+                </div>
+                <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
+
+                    <a
+                                        href="{{ route('login') }}"
+                                        class="rounded-md px-3 py-2 text-black ring-1 ring-transparent transition hover:text-black/70 focus:outline-none focus-visible:ring-[#FF2D20]"
+                                    >
+                                    {{ __('Login') }}
+                                    </a>
+
+                                    @if (Route::has('register'))
+                                        <a
+                                            href="{{ route('register') }}"
+                                            class="rounded-md px-3 py-2 text-black ring-1 ring-transparent transition hover:text-black/70 focus:outline-none focus-visible:ring-[#FF2D20]"
+                                        >
+                                            Register
+                                        </a>
+                                    @endif
                 </div>
 
                 <!-- Teams Dropdown -->
@@ -102,9 +119,11 @@
                     </div>
                 @endif
 
+                @auth
                 <!-- Settings Dropdown -->
                 <div class="ms-3 relative">
                     <x-dropdown align="right" width="48">
+                        
                         <x-slot name="trigger">
                             @if (Laravel\Jetstream\Jetstream::managesProfilePhotos())
                                 <button class="flex text-sm border-2 border-transparent rounded-full focus:outline-none focus:border-gray-300 transition">
@@ -122,6 +141,7 @@
                                 </span>
                             @endif
                         </x-slot>
+                        
 
                         <x-slot name="content">
                             <!-- Account Management -->
@@ -153,6 +173,7 @@
                         </x-slot>
                     </x-dropdown>
                 </div>
+                @endauth
             </div>
 
             <!-- Hamburger -->
@@ -167,6 +188,7 @@
         </div>
     </div>
 
+    @auth
     <!-- Responsive Navigation Menu -->
     <div :class="{'block': open, 'hidden': ! open}" class="hidden sm:hidden">
         <div class="pt-2 pb-3 space-y-1">
@@ -247,4 +269,6 @@
             </div>
         </div>
     </div>
+
+    @endauth
 </nav>
