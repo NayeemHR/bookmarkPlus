@@ -1,30 +1,58 @@
 <x-app-layout>
-    {{-- <x-slot name="header">
-        <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-            {{ __('Bookmarks') }}
-        </h2>
-    </x-slot> --}}
+
+    <x-slot name="header">
+      <ul class="flex font-semibold font-nunito nav-x justify-center items-center gap-1 fs-7 m-0 fw-bold">
+
+        <li >
+          <a class="flex" href="{{route('home')}}">
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-5 mr-3">
+            <path stroke-linecap="round" stroke-linejoin="round" d="m2.25 12 8.954-8.955c.44-.439 1.152-.439 1.591 0L21.75 12M4.5 9.75v10.125c0 .621.504 1.125 1.125 1.125H9.75v-4.875c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125V21h4.125c.621 0 1.125-.504 1.125-1.125V9.75M8.25 21h8.25" />
+          </svg>Home
+          </a>
+        </li>
+        {{-- <li>
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
+            <path stroke-linecap="round" stroke-linejoin="round" d="m8.25 4.5 7.5 7.5-7.5 7.5" />
+          </svg>
+
+        </li>
+        <li>
+          <a href="/blog">Blog</a>
+        </li>
+         --}}
+        <li>
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
+            <path stroke-linecap="round" stroke-linejoin="round" d="m8.25 4.5 7.5 7.5-7.5 7.5" />
+          </svg>
+
+        </li>
+        <li>
+          <span class="opacity-50">All Bookmarks</span>
+        </li>
+      </ul>
+    </x-slot>
 
     <div class="py-12">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-            <div class="bg-white overflow-hidden shadow-xl sm:rounded-lg">
+            <div class=" overflow-hidden  sm:rounded-lg">
                 
 
                 <section class="py-6 px-5">
                     <div class="col-span-12">
                         <div class="flex flex-col md:h-10 gap-y-3 md:items-center md:flex-row">
-                          <div class="text-base font-medium">Recent Bookmarks</div>
+                          <div class="font-heading text-xl font-semibold">All Bookmarks</div>
                           <div class="flex flex-col sm:flex-row gap-x-3 gap-y-2 md:ml-auto">
                             <div class="">
                               
-
-                              
-                            <a class="btn px-2 py-3 bg-slate-500 rounded-lg" href="{{ route('bookmarks.create') }}">
-                              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-4 inline-block">
-                                <path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15" />
-                              </svg>
-                              {{ __('New') }}
-                            </a>
+                              @auth
+                              <a type="button" class="w-full text-white bg-cyan-700 border-cyan-700 px-4 py-3.5 rounded-lg hover:text-white hover:bg-cyan-800 hover:border-cyan-800 " href="{{ route('bookmarks.create') }}">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="plus" class="lucide lucide-plus inline-block mr-1 size-4">
+                                  <path d="M5 12h14"></path><path d="M12 5v14"></path>
+                                </svg>
+                                <span class="align-middle">New Bookmark</span>
+                              </a>
+                              @endauth
+                            
                               
                               {{-- <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-calendar-check2 absolute inset-y-0 left-0 z-10 w-4 h-4 my-auto ml-3 stroke-[1.3]">
                                 <path d="M21 14V6a2 2 0 0 0-2-2H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h8"></path>
@@ -60,7 +88,10 @@
                             </thead>
                           </table>
                         </div>
-                        <div class="flex flex-col-reverse flex-wrap items-center mt-3 flex-reverse gap-y-2 sm:flex-row">
+                        <div class="pagination mt-4 flex justify-center">
+                          {{ $bookmarks->links('vendor.pagination.tailwind') }}
+                      </div>
+                        {{-- <div class="flex flex-col-reverse flex-wrap items-center mt-3 flex-reverse gap-y-2 sm:flex-row">
                           <nav class="flex-1 w-full mr-auto sm:w-auto">
                             <ul class="flex w-full mr-0 sm:w-auto sm:mr-auto">
                               <li class="flex-1 sm:flex-initial">
@@ -116,7 +147,7 @@
                             <option>35</option>
                             <option>50</option>
                           </select>
-                        </div>
+                        </div> --}}
                       </div>
                 </section>
 

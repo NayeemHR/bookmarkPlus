@@ -13,8 +13,18 @@ export default {
 
     theme: {
         extend: {
+            colors: {
+                'deep-forest-green': '#2F4F4F',
+                'warm-beige': '#F5DEB3',
+                'terracotta': '#D2691E',
+                'soft-cream': '#FFF8E1',
+                'charcoal-gray': '#333333',
+            },
             fontFamily: {
                 sans: ['Figtree', ...defaultTheme.fontFamily.sans],
+                'heading': ['Lora', 'serif'],        // For headings
+                'body': ['Poppins', 'sans-serif'],   // For body text
+                'nunito': ['Nunito', 'sans-serif'],  // For buttons
             },
         },
     },

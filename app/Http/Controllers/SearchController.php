@@ -3,15 +3,18 @@
 namespace App\Http\Controllers;
 
 use App\Models\Bookmark;
+use App\Models\Tag;
 
 class SearchController extends Controller
 {
     public function __invoke()
     {
-        $bookmarks = Bookmark::with('tags')->where('title', 'like', '%' . request('q') . '%')->orWhere('tags', 'like', '%' . request('q') . '%')->get();
+        $bookmarks = Bookmark::with('owner', 'tags')->where('title', 'like', '%' . request('q') . '%')->get();
+        $tags = Tag::Where('name', 'like', '%' . request('q') . '%')->get();
 
         return view('results', [
             'bookmarks' => $bookmarks,
+            'tags' => $tags,
         ]);
 
     }

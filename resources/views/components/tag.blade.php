@@ -25,5 +25,5 @@
 
 
 <a href="/tags/{{strtolower($tag->name)}}" class="{{$classes}}" >
-    {{ucwords($tag->name)}}
+    {{Str::lower($tag->name)}}
 </a>

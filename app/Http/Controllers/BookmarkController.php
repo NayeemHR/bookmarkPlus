@@ -15,11 +15,12 @@ class BookmarkController extends Controller
 
     public function index()
     {
-        $bookmarks = Bookmark::latest()->with('owner', 'tags')->get()->groupBy('status');
+        // $bookmarks = Bookmark::latest()->with('owner', 'tags')->get()->groupBy('status');
+        $bookmarks = Bookmark::orderByDesc('id')->with('owner', 'tags')->paginate(10);
         return view('bookmarks.index', [
-            'bookmarks' => $bookmarks['New'],
-            'inprogressBookmarks' => $bookmarks['In Progress'],
-            'tags' => Tag::all(),
+            'bookmarks' => $bookmarks,
+            // 'inprogressBookmarks' => $bookmarks['In Progress'],
+            // 'tags' => Tag::all(),
         ]);
 
     }
@@ -33,6 +34,11 @@ class BookmarkController extends Controller
 
     public function create()
     {
+        if (!Auth::check()) {
+            // dd('in');
+            return redirect()->route('login');
+        }
+        // dd('out');
         return view('bookmarks.create');
     }
 

@@ -1,13 +1,39 @@
 <x-app-layout>
-    <x-slot name="header">
-        <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-            {{ __('Show Bookmark') }}
-        </h2>
-    </x-slot>
+  <x-slot name="header">
+    <ul class="flex font-semibold font-nunito nav-x justify-center items-center gap-1 fs-7 m-0 fw-bold">
+
+      <li >
+        <a class="flex" href="{{route('home')}}">
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-5 mr-3">
+          <path stroke-linecap="round" stroke-linejoin="round" d="m2.25 12 8.954-8.955c.44-.439 1.152-.439 1.591 0L21.75 12M4.5 9.75v10.125c0 .621.504 1.125 1.125 1.125H9.75v-4.875c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125V21h4.125c.621 0 1.125-.504 1.125-1.125V9.75M8.25 21h8.25" />
+        </svg>Home
+        </a>
+      </li>
+      <li>
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
+          <path stroke-linecap="round" stroke-linejoin="round" d="m8.25 4.5 7.5 7.5-7.5 7.5" />
+        </svg>
+
+      </li>
+      <li>
+        <a href="{{route('bookmarks.index')}}">Bookmarks</a>
+      </li>
+      
+      <li>
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
+          <path stroke-linecap="round" stroke-linejoin="round" d="m8.25 4.5 7.5 7.5-7.5 7.5" />
+        </svg>
+
+      </li>
+      <li>
+        <span class="opacity-50">{{ $bookmark->title }}</span>
+      </li>
+    </ul>
+  </x-slot>
 
     <div class="py-12">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-            <div class="bg-white overflow-hidden shadow-xl sm:rounded-lg">
+            <div class="overflow-hidden sm:rounded-lg">
                 
                 <div class="max-w-7xl mx-auto py-10 sm:px-6 lg:px-8">
                     
@@ -20,16 +46,13 @@
                                 @endforeach
                             </div>
                           </div>
-                            <h1 class=" text-neutral-900 font-semibold text-3xl md:text-4xl md:!leading-[120%] lg:text-5xl dark:text-black-100 max-w-4xl " title="Trending web &amp; landing page designs in 2023">
-                                <a href="{{$bookmark->url}}" target="_blank">
-                                    {{ $bookmark->title }}
-                                  </a>
+                            <h1 class=" text-neutral-900 font-semibold text-3xl md:text-4xl md:!leading-[150%] lg:text-5xl dark:text-black-100 max-w-4xl font-heading " title="Trending web &amp; landing page designs in 2023">{{ $bookmark->title }}
                             </h1>
-                            <a href="{{$bookmark->url}}" target="_blank">
+                            <a href="{{$bookmark->url}}" target="_blank" class="font-semibold text-cyan-700 hover:underline text-sm">
                                 {{ $bookmark->url }}
                               </a>
                           
-                          <div class="w-full border-b border-neutral-200 dark:border-neutral-700"></div>
+                          <div class="w-full border-b border-neutral-200 dark:border-neutral-200"></div>
                           <div class="flex flex-col sm:flex-row justify-between sm:items-end space-y-5 sm:space-y-0 sm:space-x-5 rtl:space-x-reverse">
                             <div class="nc-PostMeta2 flex items-center flex-wrap text-neutral-700 text-left dark:text-neutral-200 text-sm leading-none flex-shrink-0">
                               <a class="flex items-center space-x-2 rtl:space-x-reverse" href="/author/the-demo-author-slug">
@@ -51,14 +74,13 @@
                             </div>
                             <div class="nc-SingleMetaAction2 ">
                               <div class="flex flex-row space-x-2.5 rtl:space-x-reverse items-center">
-                                <div class="nc-PostCardLikeAndComment flex items-center space-x-2 rtl:space-x-reverse !space-x-2.5 rtl:!space-x-reverse">
-                                  <button class="nc-PostCardLikeAction relative min-w-[68px] flex items-center rounded-full leading-none group transition-colors px-4 h-9 text-sm text-neutral-700 bg-neutral-50 dark:text-neutral-200 dark:bg-neutral-800 hover:bg-rose-50 dark:hover:bg-rose-100 hover:text-rose-600 dark:hover:text-rose-500" title="Liked">
-                                    
-                                    <span class=" text-neutral-900 dark:text-neutral-200">{{ucwords($bookmark->type)}}</span>
+                                <div class="nc-PostCardLikeAndComment flex space-x-2 ">
+                                  <button class="nc-PostCardLikeAction relative min-w-[68px] flex items-center rounded-full leading-none group transition-colors px-4 h-9 text-sm text-neutral-700 bg-neutral-50 dark:text-neutral-200 dark:bg-neutral-800 hover:bg-rose-50 dark:hover:bg-rose-100 hover:text-rose-600 dark:hover:text-rose-500" >
+                                    <span class="">{{ucwords($bookmark->type)}}</span>
                                   </button>
                                   <a href="#comments" class="nc-PostCardCommentBtn relative items-center min-w-[68px] rounded-full text-neutral-6000 bg-neutral-50 transition-colors dark:text-neutral-200 dark:bg-neutral-800 hover:bg-teal-50 dark:hover:bg-teal-100 hover:text-teal-600 dark:hover:text-teal-500 hidden sm:flex  px-4 h-9 text-sm " title="Comments">
                                     
-                                    <span class=" text-neutral-900 dark:text-neutral-200">{{ucwords($bookmark->status)}}</span>
+                                    <span class="">{{ucwords($bookmark->status)}}</span>
                                   </a>
                                 </div>
                                 @if (auth()->user()->can('update', $bookmark) || auth()->user()->can('delete', $bookmark))
