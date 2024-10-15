@@ -1,29 +1,32 @@
 <x-app-layout>
-    <x-slot name="header">
+    {{-- <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 leading-tight">
             {{ __('Bookmarks') }}
         </h2>
-    </x-slot>
+    </x-slot> --}}
 
     <div class="py-12">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div class="bg-white overflow-hidden shadow-xl sm:rounded-lg">
-                <section class="py-6 px-5">
-                    <div class="text-base font-medium">Recent Tags</div>
-                    <div class="mt-6 space-x-1">
-                        @foreach ($tags as $tag)
-                        <x-tag :$tag size='base'/>
-                    @endforeach
-                    </div>
-                </section>
+                
 
                 <section class="py-6 px-5">
                     <div class="col-span-12">
                         <div class="flex flex-col md:h-10 gap-y-3 md:items-center md:flex-row">
                           <div class="text-base font-medium">Recent Bookmarks</div>
                           <div class="flex flex-col sm:flex-row gap-x-3 gap-y-2 md:ml-auto">
-                            <div class="relative">
-                              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-calendar-check2 absolute inset-y-0 left-0 z-10 w-4 h-4 my-auto ml-3 stroke-[1.3]">
+                            <div class="">
+                              
+
+                              
+                            <a class="btn px-2 py-3 bg-slate-500 rounded-lg" href="{{ route('bookmarks.create') }}">
+                              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-4 inline-block">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15" />
+                              </svg>
+                              {{ __('New') }}
+                            </a>
+                              
+                              {{-- <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-calendar-check2 absolute inset-y-0 left-0 z-10 w-4 h-4 my-auto ml-3 stroke-[1.3]">
                                 <path d="M21 14V6a2 2 0 0 0-2-2H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h8"></path>
                                 <line x1="16" x2="16" y1="2" y2="6"></line>
                                 <line x1="8" x2="8" y1="2" y2="6"></line>
@@ -36,7 +39,7 @@
                                 <option value="weekly">Weekly</option>
                                 <option value="monthly">Monthly</option>
                                 <option value="yearly">Yearly</option>
-                              </select>
+                              </select> --}}
                             </div>
                             
                           </div>
@@ -116,6 +119,15 @@
                         </div>
                       </div>
                 </section>
+
+                {{-- <section class="py-6 px-5">
+                  <div class="text-base font-medium">Recent Tags</div>
+                  <div class="mt-6 space-x-1">
+                      @foreach ($tags as $tag)
+                      <x-tag :$tag size='base'/>
+                  @endforeach
+                  </div>
+              </section> --}}
                 
 
             </div>

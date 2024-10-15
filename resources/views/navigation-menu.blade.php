@@ -5,7 +5,7 @@
             <div class="flex">
                 <!-- Logo -->
                 <div class="shrink-0 flex items-center">
-                    <a href="{{ route('dashboard') }}">
+                    <a href="{{ route('home') }}">
                         <x-application-mark class="block h-4 w-auto" />
                     </a>
                 </div>
@@ -15,16 +15,14 @@
                     <x-nav-link href="{{ route('home') }}" :active="request()->routeIs('home')">
                         {{ __('Home') }}
                     </x-nav-link>
-                    <x-nav-link href="{{ route('dashboard') }}" :active="request()->routeIs('dashboard')">
+                    {{-- <x-nav-link href="{{ route('dashboard') }}" :active="request()->routeIs('dashboard')">
                         {{ __('Dashboard') }}
-                    </x-nav-link>
+                    </x-nav-link> --}}
                     <x-nav-link href="{{ route('bookmarks.index') }}" :active="request()->routeIs('bookmarks.index')">
                         {{ __('Bookmarks') }}
                     </x-nav-link>
                     
-                    <x-nav-link href="{{ route('bookmarks.create') }}" :active="request()->routeIs('bookmarks.create')">
-                        {{ __('Create Bookmarks') }}
-                    </x-nav-link>
+                    
                     
                 </div>
             </div>
@@ -48,24 +46,20 @@
                     
                     
                 </div>
+                @guest
                 <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
+                    <a href="{{ route('login') }}" class="rounded-md px-3 py-2 text-black ring-1 ring-transparent transition hover:text-black/70 focus:outline-none focus-visible:ring-[#FF2D20]" > {{ __('Login') }} </a>
 
-                    <a
-                                        href="{{ route('login') }}"
-                                        class="rounded-md px-3 py-2 text-black ring-1 ring-transparent transition hover:text-black/70 focus:outline-none focus-visible:ring-[#FF2D20]"
-                                    >
-                                    {{ __('Login') }}
-                                    </a>
-
-                                    @if (Route::has('register'))
-                                        <a
-                                            href="{{ route('register') }}"
-                                            class="rounded-md px-3 py-2 text-black ring-1 ring-transparent transition hover:text-black/70 focus:outline-none focus-visible:ring-[#FF2D20]"
-                                        >
-                                            Register
-                                        </a>
-                                    @endif
+                    @if (Route::has('register'))
+                        <a
+                            href="{{ route('register') }}"
+                            class="rounded-md px-3 py-2 text-black ring-1 ring-transparent transition hover:text-black/70 focus:outline-none focus-visible:ring-[#FF2D20]"
+                        >
+                            Register
+                        </a>
+                    @endif
                 </div>
+                @endguest
 
                 <!-- Teams Dropdown -->
                 @if (Laravel\Jetstream\Jetstream::hasTeamFeatures())

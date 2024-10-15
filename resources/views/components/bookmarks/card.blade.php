@@ -1,8 +1,8 @@
 @props(['bookmark'])
 <tr class="">
-
-            <td class="px-5 py-3 border-b dark:border-darkmode-300 box  first:border-l last:border-r first:rounded-l-[0.6rem] last:rounded-r-[0.6rem] rounded-l-none rounded-r-none border-x-0 dark:bg-darkmode-600">
-              <div class="flex items-center">
+          <td class="pl-5 pr-2 border-b dark:border-darkmode-300 w-10 relative py-0 box  first:border-l last:border-r first:rounded-l-[0.6rem] last:rounded-r-[0.6rem] rounded-l-none rounded-r-none border-x-0 dark:bg-darkmode-600">
+            <div class="flex items-center justify-center">
+              <div class="relative h-5" data-headlessui-state="">
                 @php
                     
                     $type = strtolower($bookmark->type);
@@ -45,16 +45,20 @@
                     <path stroke-linecap="round" stroke-linejoin="round" d="M11.42 15.17 17.25 21A2.652 2.652 0 0 0 21 17.25l-5.877-5.877M11.42 15.17l2.496-3.03c.317-.384.74-.626 1.208-.766M11.42 15.17l-4.655 5.653a2.548 2.548 0 1 1-3.586-3.586l6.837-5.63m5.108-.233c.55-.164 1.163-.188 1.743-.14a4.5 4.5 0 0 0 4.486-6.336l-3.276 3.277a3.004 3.004 0 0 1-2.25-2.25l3.276-3.276a4.5 4.5 0 0 0-6.336 4.486c.091 1.076-.071 2.264-.904 2.95l-.102.085m-1.745 1.437L5.909 7.5H4.5L2.25 3.75l1.5-1.5L7.5 4.5v1.409l4.26 4.26m-1.745 1.437 1.745-1.437m6.615 8.206L15.75 15.75M4.867 19.125h.008v.008h-.008v-.008Z" />
                   </svg>
                   
-                @elseif($type === 'other')
+                @else
                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
                     <path stroke-linecap="round" stroke-linejoin="round" d="m16.49 12 3.75 3.75m0 0-3.75 3.75m3.75-3.75H3.74V4.499" />
                   </svg>
                   
-                @else
-                  
                 @endif
+              </div>
+            </div>
+          </td>
+            <td class=" pl-2 pr-5 py-3 border-b dark:border-darkmode-300 box  first:border-l last:border-r first:rounded-l-[0.6rem] last:rounded-r-[0.6rem] rounded-l-none rounded-r-none border-x-0 dark:bg-darkmode-600">
+              <div class="flex items-center">
+                
                 <div class="ml-3.5">
-                  <a href="{{$bookmark->url}}" class="font-medium whitespace-nowrap">{{$bookmark->title}}</a>
+                  <a href="{{$bookmark->url}}" class="font-medium">{{$bookmark->title}}</a>
                   <div class="">
                     @foreach ($bookmark->tags as $tag)
                     <x-tag :$tag size='small' />
@@ -98,14 +102,11 @@
             <td class="px-5 border-b dark:border-darkmode-300 w-20 relative py-0 box  first:border-l last:border-r first:rounded-l-[0.6rem] last:rounded-r-[0.6rem] rounded-l-none rounded-r-none border-x-0 dark:bg-darkmode-600">
               <div class="flex items-center justify-center">
                 <div class="relative h-5" data-headlessui-state="">
-                  
                   <a href="{{ route('bookmarks.show', $bookmark->id) }}"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
                     <path stroke-linecap="round" stroke-linejoin="round" d="M2.036 12.322a1.012 1.012 0 0 1 0-.639C3.423 7.51 7.36 4.5 12 4.5c4.638 0 8.573 3.007 9.963 7.178.07.207.07.431 0 .639C20.577 16.49 16.64 19.5 12 19.5c-4.638 0-8.573-3.007-9.963-7.178Z" />
                     <path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z" />
                   </svg>
                   </a>
-                  
-               
                 </div>
               </div>
             </td>
