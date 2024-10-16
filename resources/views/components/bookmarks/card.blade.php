@@ -71,7 +71,11 @@
             <td class="px-5 py-3 border dark:border-darkmode-300 w-60 box  first:border-l last:border-r first:rounded-l-[0.6rem] last:rounded-r-[0.6rem] rounded-l-none rounded-r-none border-x-0 dark:bg-darkmode-600">
               <div class="mb-1 text-xs text-slate-500 whitespace-nowrap">Author Name</div>
               <a href="" class="flex items-center text-primary">
+                <div class="w-5 h-5 image-fit zoom-in">
+                  <img class="cursor-pointer w-full rounded-full object-contain" alt="Tailwise - Admin Dashboard Template" src="{{$bookmark->user->profile_photo_url}}">
+                </div>
                 
+        
                 <div class="whitespace-nowrap">{{$bookmark->user->name}}</div>
               </a>
             </td>

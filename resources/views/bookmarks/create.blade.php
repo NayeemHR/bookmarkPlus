@@ -9,16 +9,16 @@
             </svg>Home
             </a>
           </li>
-          {{-- <li>
+          <li>
             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
               <path stroke-linecap="round" stroke-linejoin="round" d="m8.25 4.5 7.5 7.5-7.5 7.5" />
             </svg>
   
           </li>
           <li>
-            <a href="/blog">Blog</a>
+            <a href="{{route('bookmarks.index')}}">Bookmarks</a>
           </li>
-           --}}
+          
           <li>
             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
               <path stroke-linecap="round" stroke-linejoin="round" d="m8.25 4.5 7.5 7.5-7.5 7.5" />
@@ -42,7 +42,7 @@
                             <div class="col-span-2">
                                 <x-label for="title" value="{{ __('Title') }}" />
                                 <x-form.input id="title" type="text" class="mt-1 block w-full" name="title" placeholder="Nayeem Hassan's Profile."   />
-                                <x-input-error for="name" class="mt-2" />
+                                <x-input-error for="title" class="mt-2" />
                             </div>
                     
                             <div class="col-span-2">
@@ -68,9 +68,9 @@
                                       </svg> --}}
                                       <select class="bg-[length:20px_auto] disabled:bg-slate-100 disabled:cursor-not-allowed disabled:dark:bg-darkmode-700/50 [&amp;[readonly]]:bg-slate-100 [&amp;[readonly]]:cursor-not-allowed [&amp;[readonly]]:dark:bg-darkmode-700/50 bg-chevron-black transition duration-200 ease-in-out w-full text-sm border-slate-300/60 shadow-sm py-3 px-3 pr-8   focus:border-gray-300 focus:ring-0 sm:w-full rounded-[0.5rem] dark:!box" name="type" id="type">
                                         @php
-                                    $type_list = ['video', 'article', 'podcast', 'blog', 'course', 'book', 'tool', 'other'];
+                                    $type_list = ['article', 'blog', 'book', 'course',  'podcast', 'tool',  'video',    'other'];
+                                    
                                     @endphp
-                                        <option value="">Select</option>
                                         @foreach ($type_list as $item)
                                             <option value="{{$item}}">{{ucwords($item)}}</option>
                                         @endforeach
@@ -85,7 +85,7 @@
                                     <div class="relative">
                                       <select class="bg-[length:20px_auto] disabled:bg-slate-100 disabled:cursor-not-allowed disabled:dark:bg-darkmode-700/50 [&amp;[readonly]]:bg-slate-100 [&amp;[readonly]]:cursor-not-allowed [&amp;[readonly]]:dark:bg-darkmode-700/50 bg-chevron-black transition duration-200 ease-in-out  w-full text-sm border-slate-300/60 shadow-sm py-3 px-3 pr-8 focus:border-gray-300 focus:ring-0 sm:w-full rounded-[0.5rem] dark:!box " name="status" id="status">
                                         @php
-                                    $status_list = ['new', 'in progress', 'completed', 'continue'];
+                                    $status_list = ['new', 'in progress', 'completed'];
                                     @endphp
     
                                 @foreach ($status_list as $item)

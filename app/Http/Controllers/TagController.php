@@ -8,6 +8,9 @@ class TagController extends Controller
 {
     public function __invoke(Tag $tag)
     {
-        return view('results', ['bookmarks' => $tag->bookmarks->load(['user', 'tags'])]);
+        return view('tags', [
+            'bookmarks' => $tag->bookmarks->load(['user', 'tags']),
+            'tag' => $tag,
+        ]);
     }
 }
