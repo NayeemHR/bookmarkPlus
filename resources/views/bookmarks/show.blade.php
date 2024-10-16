@@ -63,7 +63,7 @@
                               </a>
                               <div class="ms-3">
                                 <div class="flex items-center">
-                                  <a class="block font-semibold" href="/author/the-demo-author-slug">{{$bookmark->owner->name}}</a>
+                                  <a class="block font-semibold" href="/author/the-demo-author-slug">{{$bookmark->user->name}}</a>
                                 </div>
                                 <div class="text-xs mt-[6px]">
                                   <span class="text-neutral-700 dark:text-neutral-300">{{ \Carbon\Carbon::parse($bookmark->created_at)->format('d-m-Y') }}</span>

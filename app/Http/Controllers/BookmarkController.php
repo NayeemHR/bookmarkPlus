@@ -16,7 +16,7 @@ class BookmarkController extends Controller
     public function index()
     {
         // $bookmarks = Bookmark::latest()->with('owner', 'tags')->get()->groupBy('status');
-        $bookmarks = Bookmark::orderByDesc('id')->with('owner', 'tags')->paginate(10);
+        $bookmarks = Bookmark::orderByDesc('id')->with('user', 'tags')->paginate(10);
         return view('bookmarks.index', [
             'bookmarks' => $bookmarks,
             // 'inprogressBookmarks' => $bookmarks['In Progress'],
@@ -53,7 +53,7 @@ class BookmarkController extends Controller
             'tags' => ['nullable'],
         ]);
 
-        $bookmark = Auth::user()->owner->bookmarks()->create(Arr::except($attributes, 'tags'));
+        $bookmark = Auth::user()->bookmarks()->create(Arr::except($attributes, 'tags'));
 
         if ($attributes['tags'] ?? false) {
             foreach (explode(',', $attributes['tags']) as $tag) {

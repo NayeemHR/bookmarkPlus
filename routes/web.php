@@ -8,7 +8,7 @@ use App\Models\Tag;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
-    $bookmarks = Bookmark::latest()->with('owner', 'tags')->limit(10)->get();
+    $bookmarks = Bookmark::latest()->with('user', 'tags')->limit(10)->get();
     $tags = Tag::latest()->limit(10)->get();
     return view('home', [
         'bookmarks' => $bookmarks,

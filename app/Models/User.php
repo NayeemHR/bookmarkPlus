@@ -65,9 +65,13 @@ class User extends Authenticatable
         ];
     }
 
-    public function owner()
+    // public function owner()
+    // {
+    //     return $this->hasOne(Owner::class);
+    // }
+    public function bookmarks()
     {
-        return $this->hasOne(Owner::class);
+        return $this->hasMany(Bookmark::class);
     }
 
 }

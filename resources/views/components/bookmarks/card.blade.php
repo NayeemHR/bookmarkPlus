@@ -72,7 +72,7 @@
               <div class="mb-1 text-xs text-slate-500 whitespace-nowrap">Author Name</div>
               <a href="" class="flex items-center text-primary">
                 
-                <div class="whitespace-nowrap">{{$bookmark->owner->name}}</div>
+                <div class="whitespace-nowrap">{{$bookmark->user->name}}</div>
               </a>
             </td>
             {{-- <td class="px-5 py-3 border dark:border-darkmode-300 w-44 box  first:border-l last:border-r first:rounded-l-[0.6rem] last:rounded-r-[0.6rem] rounded-l-none rounded-r-none border-x-0 dark:bg-darkmode-600">

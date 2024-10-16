@@ -20,9 +20,18 @@
                 <section class="py-6 px-5">
                     <div class="col-span-12">
                         <div class="flex flex-col md:h-10 gap-y-3 md:items-center md:flex-row">
-                          <div class="font-heading text-xl font-semibold">Search Results for "{{ request('q') }}"</div>
+                          <div class="font-heading text-xl mb-4 font-semibold">Search Results for "{{ request('q') }}"</div>
                         </div>
-                        @if($bookmarks->isEmpty() || $tags->isEmpty() )
+                        @endif
+                              @if (!$tags->isEmpty())
+                              @foreach($tags as $tag)
+                               <x-tag :$tag size='base' />
+                              @endforeach
+                              @endif
+
+                              <div class="w-full mt-4 border-b border-neutral-200 dark:border-neutral-200"></div>
+                              
+                        @if($bookmarks->isEmpty() ?? $tags->isEmpty() )
                             <p>No bookmarks found.</p>
                         @else
                         <div class="mt-2 overflow-auto lg:overflow-visible">
@@ -34,16 +43,7 @@
                                       <x-bookmarks.card  :$bookmark/>
                                   </div>
                               @endforeach
-                              @endif
-                              @if (!$tags->isEmpty())
-                              @foreach($tags as $tag)
-                              @foreach ($tag->bookmarks as $bookmark)
-                                  <div class=" space-y-6">
-                                      <x-bookmarks.card  :$bookmark/>
-                                  </div>
-                              @endforeach
-                              @endforeach
-                              @endif
+                              
                               
                             </thead>
                           </table>

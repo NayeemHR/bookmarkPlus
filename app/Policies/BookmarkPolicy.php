@@ -17,12 +17,12 @@ class BookmarkPolicy
 
     public function update(User $user, Bookmark $bookmark)
     {
-        return $user->id === $bookmark->owner_id;
+        return $user->id === $bookmark->user_id;
     }
 
     public function delete(User $user, Bookmark $bookmark)
     {
-        return $user->id === $bookmark->owner_id;
+        return $user->id === $bookmark->user_id;
     }
 
 }

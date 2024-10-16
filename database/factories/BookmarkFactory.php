@@ -2,7 +2,7 @@
 
 namespace Database\Factories;
 
-use App\Models\Owner;
+use App\Models\User;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
@@ -18,7 +18,7 @@ class BookmarkFactory extends Factory
     public function definition(): array
     {
         return [
-            'owner_id' => Owner::factory(),
+            'user_id' => User::factory(),
             'title' => $this->faker->sentence,
             'url' => $this->faker->url,
             'type' => $this->faker->randomElement(['Video', 'Article', 'Podcast', 'Blog', 'Course', 'Book', 'Tool', 'Other']),

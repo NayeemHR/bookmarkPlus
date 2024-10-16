@@ -10,7 +10,7 @@ class Bookmark extends Model
     use HasFactory;
 
     protected $fillable = [
-        'owner_id',
+        'user_id',
         'title',
         'url',
         'type',
@@ -32,9 +32,14 @@ class Bookmark extends Model
         return $this->belongsToMany(Tag::class);
     }
 
-    public function owner()
+    // public function owner()
+    // {
+    //     return $this->belongsTo(Owner::class);
+    // }
+
+    public function user()
     {
-        return $this->belongsTo(Owner::class);
+        return $this->belongsTo(User::class);
     }
 
 }
