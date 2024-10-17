@@ -54,11 +54,11 @@
               </div>
             </div>
           </td>
-            <td class=" pl-2 pr-5 py-3 border dark:border-darkmode-300 box  first:border-l last:border-r first:rounded-l-[0.6rem] last:rounded-r-[0.6rem] rounded-l-none rounded-r-none border-x-0 dark:bg-darkmode-600">
+            <td class=" pl-2 pr-5 py-3 border dark:border-darkmode-300 w-60 box  first:border-l last:border-r first:rounded-l-[0.6rem] last:rounded-r-[0.6rem] rounded-l-none rounded-r-none border-x-0 dark:bg-darkmode-600">
               <div class="flex items-center">
                 
                 <div class="ml-3.5">
-                  <a href="{{$bookmark->url}}" class="font-medium hover:font-semibold">{{Str::limit($bookmark->title, 25, '...')  }}</a>
+                  <a href="{{$bookmark->url}}" target="_blank" class="font-medium hover:font-semibold">{{Str::limit($bookmark->title, 30, '...')  }}</a>
                   <div class="">
                     @foreach ($bookmark->tags as $tag)
                     <x-tag :$tag size='small' />
@@ -69,25 +69,21 @@
               </div>
             </td>
             <td class="px-5 py-3 border dark:border-darkmode-300 w-60 box  first:border-l last:border-r first:rounded-l-[0.6rem] last:rounded-r-[0.6rem] rounded-l-none rounded-r-none border-x-0 dark:bg-darkmode-600">
-              <div class="mb-1 text-xs text-slate-500 whitespace-nowrap">Author Name</div>
-              <a href="" class="flex items-center text-primary">
-                <div class="w-5 h-5 image-fit zoom-in">
-                  <img class="cursor-pointer w-full rounded-full object-contain" alt="Tailwise - Admin Dashboard Template" src="{{$bookmark->user->profile_photo_url}}">
-                </div>
-                
-        
-                <div class="whitespace-nowrap">{{$bookmark->user->name}}</div>
-              </a>
-            </td>
-            {{-- <td class="px-5 py-3 border dark:border-darkmode-300 w-44 box  first:border-l last:border-r first:rounded-l-[0.6rem] last:rounded-r-[0.6rem] rounded-l-none rounded-r-none border-x-0 dark:bg-darkmode-600">
-              <div class="mb-1.5 text-xs text-slate-500 whitespace-nowrap">Purchased Items</div>
               <div class="flex mb-1">
-                <div class="w-5 h-5 image-fit zoom-in">
-                  <img class="cursor-pointer rounded-full shadow-[0px_0px_0px_2px_#fff,_1px_1px_5px_rgba(0,0,0,0.32)] dark:shadow-[0px_0px_0px_2px_#3f4865,_1px_1px_5px_rgba(0,0,0,0.32)]" alt="Tailwise - Admin Dashboard Template" src="https://avatar.iran.liara.run/public">
+                <div class="w-10 h-10 image-fit zoom-in">
+                  <img class="cursor-pointer rounded-full" alt="Tailwise - Admin Dashboard Template" src="{{ $bookmark->user->profile_photo_url }}" />
                 </div>
                 
+                <div class="ml-4">
+                  <div class="mb-1 text-xs text-slate-500 whitespace-nowrap">Author Name</div>
+                <a href="" class="flex items-center text-primary">
+                  <div class="whitespace-nowrap">{{$bookmark->user->name}}</div>
+                </a>
+                </div>
               </div>
-            </td> --}}
+              
+            </td>
+            
             <td class="px-5 py-3 border dark:border-darkmode-300 w-44 box  first:border-l last:border-r first:rounded-l-[0.6rem] last:rounded-r-[0.6rem] rounded-l-none rounded-r-none border-x-0 dark:bg-darkmode-600">
               <div class="mb-1 text-xs text-slate-500 whitespace-nowrap">Status</div>
               <div class="flex items-center text-primary">
@@ -96,19 +92,19 @@
                   <path d="M3 5v14a2 2 0 0 0 2 2h16v-5"></path>
                   <path d="M18 12a2 2 0 0 0 0 4h4v-4Z"></path>
                 </svg>
-                <div class="ml-1.5 whitespace-nowrap">{{$bookmark->status}}</div>
+                <div class="ml-1.5 whitespace-nowrap">{{Str::ucfirst($bookmark->status)}}</div>
               </div>
             </td>
             <td class="px-5 py-3 border dark:border-darkmode-300 w-44 box  first:border-l last:border-r first:rounded-l-[0.6rem] last:rounded-r-[0.6rem] rounded-l-none rounded-r-none border-x-0 dark:bg-darkmode-600">
-              <div class="mb-1 text-xs text-slate-500 whitespace-nowrap">Date</div>
+              <div class="mb-1 text-xs text-slate-500 whitespace-nowrap">Created Date</div>
               <div class="whitespace-nowrap">{{ \Carbon\Carbon::parse($bookmark->created_at)->format('d-m-Y') }}</div>
             </td>
             <td class="px-5 border dark:border-darkmode-300 w-20 relative py-0 box  first:border-l last:border-r first:rounded-l-[0.6rem] last:rounded-r-[0.6rem] rounded-l-none rounded-r-none border-x-0 dark:bg-darkmode-600">
               <div class="flex items-center justify-center">
                 <div class="relative h-5" data-headlessui-state="">
                   @guest
-                  <a href="{{ route('login') }}" class="btn btn-primary w-20 mr-1 mb-0">
-                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6 stroke-gray-500 hover:stroke-cyan-900">
+                  <a href="{{ route('login') }}" class="btn btn-primary w-20 mr-1 mb-0 ">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6 stroke-gray-500">
                       <path stroke-linecap="round" stroke-linejoin="round" d="M2.036 12.322a1.012 1.012 0 0 1 0-.639C3.423 7.51 7.36 4.5 12 4.5c4.638 0 8.573 3.007 9.963 7.178.07.207.07.431 0 .639C20.577 16.49 16.64 19.5 12 19.5c-4.638 0-8.573-3.007-9.963-7.178Z" />
                       <path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z" />
                     </svg>
