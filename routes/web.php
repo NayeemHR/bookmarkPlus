@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\BookmarkController;
+use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\SearchController;
 use App\Http\Controllers\TagController;
 use App\Models\Bookmark;
@@ -31,3 +32,5 @@ Route::middleware([
 });
 
 Route::resource('bookmarks', BookmarkController::class);
+
+Route::get('/profile/{id}', [ProfileController::class, 'showProfile'])->name('profile');

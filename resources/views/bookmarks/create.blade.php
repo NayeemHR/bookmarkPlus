@@ -68,7 +68,7 @@
                                       </svg> --}}
                                       <select class="bg-[length:20px_auto] disabled:bg-slate-100 disabled:cursor-not-allowed disabled:dark:bg-darkmode-700/50 [&amp;[readonly]]:bg-slate-100 [&amp;[readonly]]:cursor-not-allowed [&amp;[readonly]]:dark:bg-darkmode-700/50 bg-chevron-black transition duration-200 ease-in-out w-full text-sm border-slate-300/60 shadow-sm py-3 px-3 pr-8   focus:border-gray-300 focus:ring-0 sm:w-full rounded-[0.5rem] dark:!box" name="type" id="type">
                                         @php
-                                    $type_list = ['article', 'blog', 'book', 'course',  'podcast', 'tool',  'video',    'other'];
+                                    $type_list = ['article', 'blog', 'book', 'course',  'podcast', 'reel', 'tool',  'video',    'other'];
                                     
                                     @endphp
                                         @foreach ($type_list as $item)

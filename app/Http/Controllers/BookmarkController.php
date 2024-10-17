@@ -8,6 +8,8 @@ use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use Illuminate\Http\Request;
 use Illuminate\Support\Arr;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Http;
+use Symfony\Component\DomCrawler\Crawler;
 
 class BookmarkController extends Controller
 {
@@ -112,4 +114,25 @@ class BookmarkController extends Controller
 
         return redirect('/bookmarks')->with('success', 'Bookmark deleted successfully');
     }
+
+    public function getFeaturedImage($url)
+    {
+        // Send an HTTP request to the given URL
+        $response = Http::get($url);
+
+        // Check if the response is successful
+        if ($response->successful()) {
+            // Use DomCrawler to parse the HTML content
+            $crawler = new Crawler($response->body());
+
+            // Find the Open Graph image (og:image) meta tag
+            $ogImage = $crawler->filterXpath("//meta[@property='og:image']")->attr('content');
+
+            // Return the featured image URL if found
+            return $ogImage ?? null;
+        }
+
+        return null;
+    }
+
 }
