@@ -6,7 +6,9 @@
                 <!-- Logo -->
                 <div class="shrink-0 flex items-center">
                     <a href="{{ route('home') }}">
-                        <x-application-mark class="block h-4 w-auto" />
+                        <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="32" height="32" viewBox="0 0 32 32">
+                            <image xlink:href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAAAXNSR0IArs4c6QAAAeNJREFUWEftl8suREEQhr9x2UiEiLDiRbCyFYQt4SHwEMxDkNgShKWIhBfB0kYkVgz+SZWc6fS5zpyJhNqcS1d3/V1/VVd1g2wZAlo5OnnDA8B7mlIjb3bd43kAFoEx4KMikEHgBbiu4oEHYKai4XDaIzAbWyv0gDgXXwfATorx0BvaZRFpAruA22jPSaPgHFi2VVeBZ/veMzrcqMDofR+4AKYTdHngXdo6Gl8JkaYBOAHWTNl15oC7FADzwH2KGz7t/ymw3g0AARIw37XW8nctLAOetsnU6wsA0STaOvi13f4DqMUDyVhSFvSVgliw9wWAcvjMrG/b89CeS8BV3UG4Bcigp5xse2oK0FHdAGRs1AwlaRCwVzsHlP9h+e5ZEBY572M6DkCn6EI3J6HmxnYY++d2NLZpH0+xslymFlT1QOa8PwHAY6DrclyVghCA4kLSzpZ+UPBr0vA4kRE/3izjAdX6NJE7/QDyHedR1o6JMgDyFvTxogDaB1ORplSFRhLzgBrPSeAGUBsvUWck0dgbsGHfas1vvxvYEWDK9JpV2vKYJ6IpZorukVIxoLllLybDtmtvTMOY8K44ed9s9epqNh7QkPRSWIw6akcegKKBl6WnmJhwzkPFPABFr+eZV/AsdF8jjKEht3mvOwAAAABJRU5ErkJggg==" x="0" y="0" width="32" height="32"/>
+                          </svg>
                     </a>
                 </div>
 
